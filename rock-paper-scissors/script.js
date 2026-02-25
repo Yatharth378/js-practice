@@ -1,60 +1,64 @@
-function getComputerChoice(){
-    let randomNumber = Math.floor(Math.random() * 3);
-    if (randomNumber==0){
-        return "Rock";
-    }else if (randomNumber==1){
-        return "Paper";
-    }else{
-        return "Scissors";
-    }
-}
+ function playGame(){
+        function getComputerChoice(){
+            let randomNumber = Math.floor(Math.random() * 3);
+            if ( randomNumber == 1){
+                return "paper"
+            }else if(randomNumber == 2){
+                return "rock"
+            }else{
+                return "scissors"
+            };
 
-function getHumanChoice(){
-    let humanChoice = prompt("Choose 1)Rock, 2)Paper or 3)Scissors !")
-    return humanChoice;
-}
+            
+        };
 
-function playGame(){
-    let computerChoice = getComputerChoice();
-    let manChoice = getHumanChoice();    
-
-    console.log(computerChoice);
-    console.log(manChoice);
-
-    let humanScore = 0;
-    let computerScore = 0;
-
-    function playRound(){
-
-        if (manChoice===computerChoice){
-            console.log(`It's a tie! Both chose ${manChoice}.`);
-        }else if(
-            (manChoice==="Rock" && computerChoice==="Scissors")||
-            (manChoice==="Paper" && computerChoice==="Rock")||
-            (manChoice==="Scissors" && computerChoice==="Paper")
-        ){
-            humanScore++;
-            console.log(`You win! ${manChoice} beats ${computerChoice}.`);
-        }else{
-            computerScore++;
-            console.log(`Computer win! ${computerChoice} beats ${manChoice}.`);
+        function getHumanChoice(){
+            let humanChoice = prompt("Choose : 1) Rock  2) Paper  3) Scissors !");
+            humanChoice = humanChoice.toLowerCase();
+            return humanChoice;
         }
-    }
 
-    for (let i=0; i<5; i++){
-        console.log(`--- Round ${i + 1} ---`)
-        let computerChoice = getComputerChoice();
-        let manChoice = getHumanChoice();
+        let humanScore = 0;
+        let computerScore = 0;
 
-        playRound(manChoice,computerChoice);
-        console.log(`Score -> You: ${humanScore} | Computer : ${computerScore}`);
-    }
-    if(humanScore>computerScore){
-        console.log("Final Result : You Won the Match !");
-    }else if(computerScore>humanScore){
-        console.log("Final Result : Computer Won the Match !");
-    }else{
-        console.log("Final Result : It's a draw !");
-    }
-}
-playGame();
+
+        for(i=0;i<5;i++){
+            console.log(`--- Round ${i + 1} ---`)
+            
+            let humanPick = getHumanChoice();
+            let computerPick = getComputerChoice();
+
+            function playRound(){
+                console.log(humanPick);
+                console.log(computerPick);
+                if(humanPick === computerPick){
+                    console.log(`It's a draw! Both chose ${humanPick.toUpperCase()}`)
+                }else if( 
+                    (humanPick==="rock" && computerPick==="scissors")||
+                    (humanPick==="paper" && computerPick==="rock")||
+                    (humanPick==="scissors" && computerPick==="paper")
+                ){
+                    humanScore++
+                    console.log(`You Win !`)
+                }else{
+                    computerScore++
+                    console.log(`Computer Win !`)
+                }
+
+                console.log(`Score -> You: ${humanScore} | Computer: ${computerScore}`);
+            }
+            playRound();
+            
+        } 
+        console.log("============================");
+        console.log("GAME OVER");
+        if (humanScore > computerScore) {
+            console.log(`Final Result: You Won the Match! (${humanScore} - ${computerScore}) 🏆`);
+        } else if (computerScore > humanScore) {
+            console.log(`Final Result: Computer Won the Match! (${computerScore} - ${humanScore}) 🤖`);
+        } else {
+            console.log("Final Result: It's a draw! 🤝");
+        }
+ }
+
+ playGame();
