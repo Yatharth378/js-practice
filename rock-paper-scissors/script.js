@@ -1,64 +1,61 @@
- function playGame(){
-        function getComputerChoice(){
-            let randomNumber = Math.floor(Math.random() * 3);
-            if ( randomNumber == 1){
-                return "paper"
-            }else if(randomNumber == 2){
-                return "rock"
-            }else{
-                return "scissors"
-            };
+let humanScore = 0;
+let computerScore = 0;
+const winningScore = 5;
 
-            
-        };
+const roundResultDiv = document.getElementById("round-result");
+const scoreDisplayDiv = document.getElementById("score-display");
+const finalWinnerDiv = document.getElementById("final-winner");
 
-        function getHumanChoice(){
-            let humanChoice = prompt("Choose : 1) Rock  2) Paper  3) Scissors !");
-            humanChoice = humanChoice.toLowerCase();
-            return humanChoice;
-        }
+function getComputerChoice(){
+    let randomNumber = Math.floor(Math.random() * 3);
+    if ( randomNumber == 1){
+        return "paper"
+    }else if(randomNumber == 2){
+        return "rock"
+    }else{
+        return "scissors"
+    };
+};            
 
-        let humanScore = 0;
-        let computerScore = 0;
+function playRound(humanPick){
+    if(humanScore>=winningScore||computerScore>=winningScore) return;
 
+    const computerPick = getComputerChoice();
+    let message = "";
 
-        for(i=0;i<5;i++){
-            console.log(`--- Round ${i + 1} ---`)
-            
-            let humanPick = getHumanChoice();
-            let computerPick = getComputerChoice();
+    if(humanPick === computerPick){
+        message = `It's a draw! Both chose ${humanPick.toUpperCase()}`;
+    }else if( 
+        (humanPick==="rock" && computerPick==="scissors")||
+        (humanPick==="paper" && computerPick==="rock")||
+        (humanPick==="scissors" && computerPick==="paper")
+    ){
+        humanScore++
+        message = `You Win! ${humanPick} beats ${computerPick}`;
+    }else{
+        computerScore++
+        message = `Computer Win! ${computerPick} beats ${humanPick}`;
+    }
 
-            function playRound(){
-                console.log(humanPick);
-                console.log(computerPick);
-                if(humanPick === computerPick){
-                    console.log(`It's a draw! Both chose ${humanPick.toUpperCase()}`)
-                }else if( 
-                    (humanPick==="rock" && computerPick==="scissors")||
-                    (humanPick==="paper" && computerPick==="rock")||
-                    (humanPick==="scissors" && computerPick==="paper")
-                ){
-                    humanScore++
-                    console.log(`You Win !`)
-                }else{
-                    computerScore++
-                    console.log(`Computer Win !`)
-                }
+    roundResultDiv.textContent = message;
+    scoreDisplayDiv.textContent = `You: ${humanScore} | Computer: ${computerScore}`;
 
-                console.log(`Score -> You: ${humanScore} | Computer: ${computerScore}`);
+    checkWinner();
+    
+}
+
+function checkWinner(){
+            if (humanScore === winningScore) {
+                finalWinnerDiv.textContent = `Final Result: You Won the Match! (${humanScore} - ${computerScore}) 🏆`;
+            } else if (computerScore === winningScore) {
+                finalWinnerDiv.textContent = `Final Result: Computer Won the Match! (${computerScore} - ${humanScore}) 🤖`;
             }
-            playRound();
-            
-        } 
-        console.log("============================");
-        console.log("GAME OVER");
-        if (humanScore > computerScore) {
-            console.log(`Final Result: You Won the Match! (${humanScore} - ${computerScore}) 🏆`);
-        } else if (computerScore > humanScore) {
-            console.log(`Final Result: Computer Won the Match! (${computerScore} - ${humanScore}) 🤖`);
-        } else {
-            console.log("Final Result: It's a draw! 🤝");
         }
- }
+        
+function disableButtons(){
+    document.querySelectorAll("button").forEach(btn => btn.disabled = true);
+}
 
- playGame();
+document.getElementById("rock").addEventListener("click", () => playRound("rock"));
+document.getElementById("paper").addEventListener("click", () => playRound("paper"));
+document.getElementById("scissors").addEventListener("click", () => playRound("scissors"));
