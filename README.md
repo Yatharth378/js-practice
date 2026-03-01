@@ -8,3 +8,5 @@ Second Project is Rock Paper Scissors Game.
 I have done DOM Manupilation, with alot of examples like fizz buzz, add7 multiply capitalizeFirstLetter lastLetter, etc...
 
 Created a Shopping List with js.
+
+Made a project that makes 16x16 Grid Squares , also a the user inputs.
