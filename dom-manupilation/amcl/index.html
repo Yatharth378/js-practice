@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Practice</title>
+</head>
+
+<body>
+    <script>
+        function add7() {
+            let x = prompt("Give the number to add 7")
+            let d = Number(x) + 7;
+            console.log('The number + 7 = ' + d);
+        }
+
+        function multiply() {
+            let y = prompt("give the number to mutiply(first)");
+            let z = prompt("give the numeber to multiply by(second)");
+            let c = y * z;
+            console.log("The multipication of " + y + " and " + z + " is = " + c);
+
+        }
+
+        function capitalize() {
+            let str = prompt("Give the String");
+            str = str.charAt(0).toUpperCase() + str.slice(1).toLowerCase();
+            console.log(str)
+        }
+
+        function lastLetter() {
+            let st = prompt("Give the String for Last letter");
+            st = st.slice(-1);
+            console.log(st);
+        }
+        add7();
+        multiply();
+        capitalize();
+        lastLetter();
+    </script>
+</body>
+
+</html>
