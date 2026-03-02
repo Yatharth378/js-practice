@@ -1,5 +1,5 @@
 # js-practice
-This my practice file, I practice js fucntions and other things and save it. This file was created on 24th Feb 2026.
+This my practice file, I practice js fucntions and other things and save it. This file was created on 24th Feb 2026. 
 
 My first Practice file was a Number Guessing Game.
 
@@ -10,3 +10,5 @@ I have done DOM Manupilation, with alot of examples like fizz buzz, add7 multipl
 Created a Shopping List with js.
 
 Made a project that makes 16x16 Grid Squares , also a the user inputs.
+
+You can go to the live website for every example.

@@ -8,6 +8,7 @@
 </head>
 
 <body>
+    <h1>Results in console log.(example array = [1,2,3,4,5,6,7,8])</h1>    
     <script>
         function sumOfTripledEvens(array) {
             return array
@@ -15,6 +16,8 @@
                 .map((num) => num * 3)
                 .reduce((acc, curr) => acc + curr);
         }
+        const good = [1,2,3,4,5,6,7,8];
+        console.log(sumOfTripledEvens(good));
     </script>
 
 </body>
