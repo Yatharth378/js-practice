@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Many Examples In One</title>
+</head>
+
+<body>
+    <h2>In this example, we have take an array: fruits = ["Apple", "Banana", "Orange", "Grape", "Watermelon"]</h2>
+    <h3>There are 3 functions defined for the array.(all results in console log.) Three functions are:</h3>
+    <ul>
+        <li>Separated fruits(fruit of fruits)</li>
+        <li>toUpper</li>
+        <li>Fruits that start with letter A.</li>
+    </ul>
+    <script>
+        const fruits = ["Apple", "Banana", "Orange", "Grape", "Watermelon"]
+        for (const fruit of fruits) {
+            console.log(fruit);
+        }
+
+        function toUpper(string) {
+            return string.toUpperCase();
+        }
+
+        const upperFruits = fruits.map(toUpper);
+        console.log(upperFruits);
+
+        function fruitA(string) {
+            return string.startsWith("A");
+        }
+
+        const fruitsA = fruits.filter(fruitA);
+        console.log(fruitsA);
+    </script>
+
+</body>
+
+</html>

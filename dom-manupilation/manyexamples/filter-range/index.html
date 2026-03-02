@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Filter range or range in place.</title>
+</head>
+
+<body>
+    <h2>In this program we have taken an array( arr = [1,2,3,4,5,6,7,8]) and used filterRange and filterRangeInPlace function on them.(result in console log)</h2>
+    <script>
+        let arr = [1,2,3,4,5,6,7,8];
+        let a = 1;
+        let b = 4;
+
+        function filterRange(arr, a, b) {
+            return arr
+                .filter((item) => item >= a && item <= b)
+        }
+
+        function filterRangeInPlace(arr, a, b) {
+            return arr
+            .filter(item => a <= item <= b)
+        }
+
+        let c = filterRange(arr,a,b);
+        let d = filterRangeInPlace(arr,a,b);
+
+        console.log(c);
+        console.log(d);
+    </script>
+
+</body>
+
+</html>
